@@ -1,20 +1,31 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      The Star Wars films
     </ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
+ 
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <strong *ngIf="!loading">Veuillez patienter...</strong>
+    <ion-grid *ngIf="loading">
+      <ion-row>
+        <ion-col>ID</ion-col>
+        <ion-col>TITLE</ion-col>
+        <ion-col>EPISODE</ion-col>
+        <ion-col>DIRECTOR</ion-col>
+        <ion-col>PRODUCER</ion-col>
+        <ion-col>RELEASE DATE</ion-col>
+      </ion-row>
+      <ion-row *ngFor="let film of film; index as id;">
+        <ion-col>#{{(id+1)}}</ion-col>
+        <ion-col>{{film.title}}</ion-col>
+        <ion-col>Epis{{film.episode_id}}</ion-col>
+        <ion-col>{{film.director}}</ion-col>
+        <ion-col>{{film.producer}}</ion-col>
+        <ion-col>{{film.release_date}}</ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
 </ion-content>
